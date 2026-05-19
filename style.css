@@ -94,9 +94,12 @@ a:hover { color: var(--accent-hover); }
 .brand:hover { color: var(--text); }
 
 .brand-logo {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   display: block;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+  object-fit: cover;
 }
 
 .brand-name {
@@ -121,7 +124,7 @@ a:hover { color: var(--accent-hover); }
 
 .nav-links a.active { color: var(--text); }
 
-.nav-links a.btn { color: white; }
+.nav-links a.btn { color: white; padding: 7px 16px; font-size: 0.88rem; }
 .nav-links a.btn:hover { color: white; }
 
 /* -----------------------------------------------------------
@@ -288,6 +291,205 @@ h2 {
   color: var(--text-muted);
   font-size: 1.05rem;
   line-height: 1.6;
+}
+
+/* -----------------------------------------------------------
+   MEET — mascot tanitim bolumu (hero sonrasi)
+   ----------------------------------------------------------- */
+.meet {
+  padding: 96px 0;
+  border-top: 1px solid var(--border);
+}
+
+.meet-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* --- Sol: gorsel + dekorasyon --- */
+.meet-visual {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 460px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.meet-img {
+  position: relative;
+  z-index: 2;
+  width: 80%;
+  height: auto;
+  border-radius: 32px;
+  box-shadow:
+    0 24px 60px rgba(99, 102, 241, 0.18),
+    0 8px 24px rgba(15, 23, 42, 0.08);
+  animation: meetFloat 6s ease-in-out infinite;
+}
+
+@keyframes meetFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.meet-orbit {
+  position: absolute;
+  inset: 4%;
+  border: 1.5px dashed rgba(37, 99, 235, 0.18);
+  border-radius: 50%;
+  z-index: 0;
+  animation: meetOrbit 30s linear infinite;
+}
+
+.meet-orbit-2 {
+  inset: 14%;
+  border-color: rgba(168, 85, 247, 0.15);
+  animation-duration: 22s;
+  animation-direction: reverse;
+}
+
+@keyframes meetOrbit {
+  to { transform: rotate(360deg); }
+}
+
+.meet-glow {
+  position: absolute;
+  inset: 18%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.18), rgba(20, 184, 166, 0.08) 60%, transparent 80%);
+  border-radius: 50%;
+  z-index: 1;
+  filter: blur(20px);
+  animation: meetPulse 4s ease-in-out infinite;
+}
+
+@keyframes meetPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.08); }
+}
+
+/* Etrafa serpilmis emoji-spark'lar */
+.meet-spark {
+  position: absolute;
+  font-size: 1.6rem;
+  z-index: 3;
+  animation: meetFloat 5s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(15, 23, 42, 0.15));
+}
+
+.meet-spark-1 { top: 6%; right: 8%; animation-delay: 0.5s; }
+.meet-spark-2 { bottom: 12%; left: 4%; animation-delay: 1.2s; font-size: 1.8rem; }
+.meet-spark-3 { top: 50%; right: 2%; animation-delay: 2s; font-size: 1.4rem; }
+
+/* --- Sag: metin --- */
+.meet-content h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.meet-content h2 em {
+  font-style: normal;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.meet-lead {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.meet-lead strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Konusma balonu - bot karakteri konusuyor gibi */
+.meet-bubble {
+  background: var(--accent-soft);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.meet-bubble::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 32px;
+  width: 18px;
+  height: 18px;
+  background: var(--accent-soft);
+  border-top: 1px solid rgba(37, 99, 235, 0.15);
+  border-left: 1px solid rgba(37, 99, 235, 0.15);
+  transform: rotate(45deg);
+}
+
+.meet-bubble-author {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.meet-bubble p {
+  font-size: 0.97rem;
+  color: var(--text);
+  line-height: 1.55;
+  font-style: italic;
+}
+
+/* Ozellikler listesi */
+.meet-traits {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+}
+
+.meet-traits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.meet-traits svg {
+  color: var(--success);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.meet-traits strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* --- Responsive --- */
+@media (max-width: 820px) {
+  .meet { padding: 60px 0; }
+  .meet-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .meet-visual { max-width: 320px; }
+  .meet-content { text-align: center; }
+  .meet-bubble::before { left: 50%; transform: translateX(-50%) rotate(45deg); }
+  .meet-traits li { text-align: left; }
 }
 
 /* -----------------------------------------------------------
