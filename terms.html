@@ -17,11 +17,15 @@
       <img src="/favicon-96.png" class="brand-logo" alt="" width="32" height="32">
       <span class="brand-name">Akıl Dostum</span>
     </a>
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
+      <a href="/">Anasayfa</a>
       <a href="/privacy.html">Gizlilik</a>
       <a href="/terms.html" class="active">Şartlar</a>
-      <a href="https://instagram.com/akildostum" class="btn btn-primary">Instagram</a>
+      <a href="https://www.instagram.com/akildostum?igsh=MXc4dTNrczE4OGdqZA%3D%3D&utm_source=qr" class="btn btn-primary">Instagram</a>
     </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <main class="legal">
@@ -183,5 +187,17 @@
       <span class="muted">Türkiye</span>
     </div>
   </footer>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open', open);
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  </script>
 </body>
 </html>
