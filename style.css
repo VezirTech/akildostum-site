@@ -1767,9 +1767,10 @@ footer {
   .meet-visual { max-width: 260px; }
   .meet-spark { font-size: 1.3rem; }
 
-  /* Ornek post kartlari tek kolon */
+  /* Ornek post kartlari tek kolon — mobilde sadece 2 ornek goster */
   .post-grid { grid-template-columns: 1fr; gap: 20px; }
   .post-card.mini { max-width: 420px; margin: 0 auto; }
+  .post-grid .post-card:nth-child(3) { display: none; }
 
   /* Guide kartlari tek kolon */
   .guide-grid { grid-template-columns: 1fr; gap: 14px; }
